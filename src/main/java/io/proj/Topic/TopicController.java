@@ -18,5 +18,7 @@ public class TopicController {
 		
 		return topicService.getAllTopics();
 	}
+	
+
 
 }
