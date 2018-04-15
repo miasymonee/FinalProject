@@ -2,11 +2,13 @@ package io.proj.Topic;
 
 public class Topic {
 	
-	private String id;
+	private String topicid;
 	
 	private String name;
 	
 	private String description;
+	
+	private String date;
 	
 	
 	public Topic() {
@@ -14,22 +16,27 @@ public class Topic {
 	}
 	
 
-	public Topic(String id, String name, String description) {
+	public Topic(String topicid, String name, String description, String date) {
 		super();
-		this.id = id;
+		this.topicid = topicid;
 		this.name = name;
 		this.description = description;
+		this.date = date;
 	}
 	
 	
 
-	public String getId() {
-		return id;
+
+
+	public String getTopicid() {
+		return topicid;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+
+	public void setTopicid(String topicid) {
+		this.topicid = topicid;
 	}
+
 
 	public String getName() {
 		return name;
@@ -45,6 +52,16 @@ public class Topic {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+
+	public String getDate() {
+		return date;
+	}
+
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 	
 	
