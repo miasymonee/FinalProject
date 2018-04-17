@@ -1,10 +1,15 @@
-package io.Smite;
+package io.proj.Smite;
 
+import java.io.BufferedReader;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
+
+import org.json.JSONObject;
+
+import com.eclipsesource.json.JsonObject;
 
 
 
@@ -13,12 +18,13 @@ import java.util.TimeZone;
 public class SmiteAPI {
 	
 	private String sessionID;
-	private String authKey = "D530E077EC514654A69632CBE079BFCF";
-	private String devID = "2553";
+	private String authKey;
+	private String devID;
 	
 	private long sessionStart;
 	
 	public static final String RESPONSE_TYPE_JSON = "json";
+	private String responseFormat = RESPONSE_TYPE_JSON;
 	
 	private static final String baseURL = "http://api.smitegame.com/smiteapi.svc/";
 	
@@ -41,16 +47,32 @@ public class SmiteAPI {
 	//step to Authenticate the developerId/signature for further API use.
 	
 	
-	private Boolean createSession() throws Exception 
+	public Boolean createSession() throws Exception 
 	{
 		
 		String sessionURL = getURL(combine(new String[] {baseURL + "createsessionjson" ,  devID, getSignature("createsession"), getTimestamp() }, "/"));
 		
 		if (sessionURL == null) return false;
 		
-		else return true;
-			
-		
+	    JsonObject object = JsonObject.readFrom(sessionURL);
+        if (object.get("ret_msg").asString().equals("Approved")) {
+            sessionID = object.getString("session_id", null);
+            sessionStart = System.currentTimeMillis();
+            return true;
+        } else {
+            return false;
+        }	
+	}
+	
+	 public String testSession() throws Exception {
+	        if (!isSessionValid() && !createSession()) return null;
+	        return getURL(combine(new String[] {
+	                baseURL + "testsession" + responseFormat,
+	                devID,
+	                getSignature("testsession"),
+	                sessionID,
+	                getTimestamp()
+	        }, "/"));
 	}
 	
 	
@@ -121,12 +143,34 @@ public class SmiteAPI {
 		  return ClientHttp.fetch(baseUrl);
 	}
 	  
+	  private boolean isSessionValid() {
+	        return sessionID != null && Math.abs(System.currentTimeMillis() - sessionStart) <= 15 * 60 * 1000;
+	}
 	  
-	 
-	 
-	
-	
-	
-	
-
-}
+	  
+	  public String getPlayer(String player) throws Exception {
+	        if (!isSessionValid() && !createSession()) return "session null";
+	        return getURL(combine(new String[] {
+	                baseURL + "getplayer" + responseFormat,
+	                devID,
+	                getSignature("getplayer"),
+	                sessionID,
+	                getTimestamp(),
+	                player
+	        }, "/"));
+	}
+	  
+	  public String getFriends(String player) throws Exception{
+	        if (!isSessionValid() && !createSession()) return null;
+	        return getURL(combine(new String[] {
+	                baseURL + "getfriends" + responseFormat,
+	                devID,
+	                getSignature("getfriends"),
+	                sessionID,
+	                getTimestamp(),
+	                player
+	        }, "/"));
+	}
+	  
+	  	  
+} // end class
