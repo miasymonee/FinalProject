@@ -1,6 +1,8 @@
 package io.Data;
 
+import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonObject;
+
 
 public class Player {
 	
@@ -25,11 +27,30 @@ public class Player {
 	public Player() {
 		
 	}
-	/*
-	public Player(JsonObject jsonObject) {
+	
+	public Player(String Created_Datetime, String ID, String Last_Login_Datetime, int Leaves, int Losses, int MasteryLevel,
+			String Name, String Personal_Status_Message, String Region, String TeamId, String Team_Name, int Tier_Conquest,
+			int Tier_Duel, int Total_Achievements, int Total_Worshippers, int Wins) {
 		
+		this.Created_Datetime = Created_Datetime;
+		this.ID = ID;
+		this.Last_Login_Datetime = Last_Login_Datetime;
+		this.Leaves = Leaves;
+		this.Losses = Losses;
+		this.MasteryLevel = MasteryLevel;
+		this.Name = Name;
+		this.Personal_Status_Message = Personal_Status_Message;
+		this.Region = Region;
+		this.TeamId = TeamId;
+		this.Team_Name = Team_Name;
+		this.Tier_Conquest = Tier_Conquest;
+		this.Tier_Duel = Tier_Duel;
+		this.Total_Achievements = Total_Achievements;
+		this.Total_Worshippers = Total_Worshippers;
+		this.Wins = Wins;
 		
-		Created_Datetime = jsonObject.get("Created_Datetime").asString();
+		/*
+		Created_Datetime = jsonObject.g
 		ID = jsonObject.get("Id").asString();
 		Last_Login_Datetime = jsonObject.get("Last_Login_Datetime").asString();
 		Leaves = jsonObject.get("Leaves").asInt();
@@ -46,8 +67,10 @@ public class Player {
 		Total_Achievements = jsonObject.get("Total_Achievements").asInt();
 		Total_Worshippers =  jsonObject.get("Total_Worshippers").asInt();
 		Wins = jsonObject.get("Wins").asInt();
+		
+		*/
 	}
-*/
+
 	public String getCreated_Datetime() {
 		return Created_Datetime;
 	}

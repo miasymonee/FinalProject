@@ -1,9 +1,12 @@
 package io.proj.Smite;
 
 
-//import com.google.gson.*;
+import com.google.gson.*;
 
-//import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.Expose;
+
+import io.Data.Player;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,6 +14,9 @@ import com.eclipsesource.json.Json;
 import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonObject;
 import com.eclipsesource.json.JsonValue;
+
+import java.lang.Object;
+import java.io.Reader;
 
 
 @RestController
@@ -30,7 +36,7 @@ public class APIController {
 	}
 	
 	@RequestMapping("/player")
-	public String displayPlayer() throws Exception{
+	public Player displayPlayer() throws Exception{
 		
 		
 		String player = "PacSnackz";
@@ -39,11 +45,12 @@ public class APIController {
 		
 		String test = smite.getPlayer(player);
 		
-		JsonArray array = Json.parse(test).asArray();
+		Gson gson = new Gson();
 		
-		String json = array.asString();
+		Player[] playerObj = gson.fromJson(test, Player[].class);
 		
-		return json;
+		return playerObj[0];
+		
 		
 
 	}
