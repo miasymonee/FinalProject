@@ -1,11 +1,11 @@
 ----------------------------------------------------------------
-Mon Apr 16 14:36:45 CDT 2018:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-0162-cff5-a79e-0000061e8a70 
-on database directory memory:/Users/Jim/Documents/workspace/FinalProj/testdb with class loader sun.misc.Launcher$AppClassLoader@764c12b6 
+Mon Apr 23 21:06:39 CDT 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-0162-f567-2131-000005f43d08 
+on database directory memory:/Users/Jim/Documents/workspace/FinalProject/testdb with class loader sun.misc.Launcher$AppClassLoader@764c12b6 
 Loaded from file:/Users/Jim/.m2/repository/org/apache/derby/derby/10.14.1.0/derby-10.14.1.0.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_151-b12
-user.dir=/Users/Jim/Documents/workspace/FinalProj
+user.dir=/Users/Jim/Documents/workspace/FinalProject
 os.name=Mac OS X
 os.arch=x86_64
 os.version=10.13.4

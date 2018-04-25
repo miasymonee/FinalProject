@@ -1,10 +1,17 @@
 package io.proj.Smite;
 
-//import org.json.JSONObject;
+
+//import com.google.gson.*;
+
+//import com.google.gson.annotations.Expose;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-//import io.Data.Player;
+import com.eclipsesource.json.Json;
+import com.eclipsesource.json.JsonArray;
+import com.eclipsesource.json.JsonObject;
+import com.eclipsesource.json.JsonValue;
+
 
 @RestController
 public class APIController {
@@ -25,14 +32,20 @@ public class APIController {
 	@RequestMapping("/player")
 	public String displayPlayer() throws Exception{
 		
+		
 		String player = "PacSnackz";
 		
 		smite.createSession();
 		
 		String test = smite.getPlayer(player);
 		
-		return test;
+		JsonArray array = Json.parse(test).asArray();
 		
+		String json = array.asString();
+		
+		return json;
+		
+
 	}
 	
 	@RequestMapping("/friends")
@@ -47,6 +60,39 @@ public class APIController {
 		return friends;
 	}
 	
+	@RequestMapping("/status")
+	public String displayStatus() throws Exception{
+		
+		String player = "PacSnackz";
+		
+		smite.createSession();
+		
+		String status = smite.getPlayerStatus(player);
+		
+		return status;
+		
+	}
 	
-
+	@RequestMapping("/top")
+	public String displayTop() throws Exception{
+		
+		smite.createSession();
+		
+		String top = smite.getTopMatches();
+		
+		return top;
+	}
+	@RequestMapping("/items")
+	public String displayItems() throws Exception{
+		
+		String languageCode = "1";
+		
+		smite.createSession();
+		
+		String items = smite.getItems(languageCode);
+		
+		return items; 
+	}
+	
+	
 }

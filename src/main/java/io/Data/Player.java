@@ -1,41 +1,53 @@
 package io.Data;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.eclipsesource.json.JsonObject;
 
 public class Player {
 	
 	private String Created_Datetime;
+	private String ID;
 	private String Last_Login_Datetime;
 	private int Leaves;
 	private int Level;
 	private int Losses;
 	private int MasteryLevel;
 	private String Name;
-	private int Rank_Stat;
+	private String Personal_Status_Message;
+	private String Region;
 	private String TeamId;
 	private String Team_Name;
+	private int Tier_Conquest;
+	private int Tier_Duel;
+	private int Total_Achievements;
+	private int Total_Worshippers;
 	private int Wins;
-	private String reset_msg;
 	
-	public Player(JSONObject json) throws JSONException {
-		
-		Created_Datetime = json.getString("CreatedDatetime");
-		Last_Login_Datetime = json.getString("Last_Login_Datetime");
-		Leaves = json.getInt("Leaves");
-		Level = json.getInt("Level");
-		Losses = json.getInt("Losses");
-		MasteryLevel = json.getInt("MasteryLevel");
-		Name = json.getString("Name");
-		Rank_Stat = json.getInt("Rank_Stat");
-		TeamId= json.getString("TeamId");
-		Team_Name = json.getString("Team_Name");
-		Wins = json.getInt("Wins");
-		reset_msg = json.getString("reset_msg");
-
+	public Player() {
 		
 	}
-
+	/*
+	public Player(JsonObject jsonObject) {
+		
+		
+		Created_Datetime = jsonObject.get("Created_Datetime").asString();
+		ID = jsonObject.get("Id").asString();
+		Last_Login_Datetime = jsonObject.get("Last_Login_Datetime").asString();
+		Leaves = jsonObject.get("Leaves").asInt();
+		Level = jsonObject.get("Level").asInt();
+		Losses = jsonObject.get("Losses").asInt();
+		MasteryLevel = jsonObject.get("MasteryLevel").asInt();
+		Name = jsonObject.get("Name").asString();
+		Personal_Status_Message = jsonObject.get("Personal_Status_Message").asString();
+		Region = jsonObject.get("Region").asString();
+		TeamId = jsonObject.get("TeamId").asString();
+		Team_Name = jsonObject.get("Team_Name").asString();
+		Tier_Conquest = jsonObject.get("Tier_Conquest").asInt();
+		Tier_Duel = jsonObject.get("Tier_Duel").asInt();
+		Total_Achievements = jsonObject.get("Total_Achievements").asInt();
+		Total_Worshippers =  jsonObject.get("Total_Worshippers").asInt();
+		Wins = jsonObject.get("Wins").asInt();
+	}
+*/
 	public String getCreated_Datetime() {
 		return Created_Datetime;
 	}
@@ -92,13 +104,6 @@ public class Player {
 		Name = name;
 	}
 
-	public int getRank_Stat() {
-		return Rank_Stat;
-	}
-
-	public void setRank_Stat(int rank_Stat) {
-		Rank_Stat = rank_Stat;
-	}
 
 	public String getTeamId() {
 		return TeamId;
@@ -124,16 +129,62 @@ public class Player {
 		Wins = wins;
 	}
 
-	public String getReset_msg() {
-		return reset_msg;
+	public String getID() {
+		return ID;
 	}
 
-	public void setReset_msg(String reset_msg) {
-		this.reset_msg = reset_msg;
+	public void setID(String iD) {
+		ID = iD;
 	}
-	
-	
-	
-	
+
+	public String getPersonal_Status_Message() {
+		return Personal_Status_Message;
+	}
+
+	public void setPersonal_Status_Message(String personal_Status_Message) {
+		Personal_Status_Message = personal_Status_Message;
+	}
+
+	public String getRegion() {
+		return Region;
+	}
+
+	public void setRegion(String region) {
+		Region = region;
+	}
+
+	public int getTier_Conquest() {
+		return Tier_Conquest;
+	}
+
+	public void setTier_Conquest(int tier_Conquest) {
+		Tier_Conquest = tier_Conquest;
+	}
+
+	public int getTier_Duel() {
+		return Tier_Duel;
+	}
+
+	public void setTier_Duel(int tier_Duel) {
+		Tier_Duel = tier_Duel;
+	}
+
+	public int getTotal_Achievements() {
+		return Total_Achievements;
+	}
+
+	public void setTotal_Achievements(int total_Achievements) {
+		Total_Achievements = total_Achievements;
+	}
+
+	public int getTotal_Worshippers() {
+		return Total_Worshippers;
+	}
+
+	public void setTotal_Worshippers(int total_Worshippers) {
+		Total_Worshippers = total_Worshippers;
+	}
+
+
 
 }

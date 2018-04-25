@@ -1,15 +1,13 @@
 package io.proj.Smite;
 
-import java.io.BufferedReader;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
-
-import org.json.JSONObject;
-
 import com.eclipsesource.json.JsonObject;
+
 
 
 
@@ -169,6 +167,41 @@ public class SmiteAPI {
 	                sessionID,
 	                getTimestamp(),
 	                player
+	        }, "/"));
+	}
+	  
+	  public String getPlayerStatus(String player) throws Exception {
+	        if (!isSessionValid() && !createSession()) return null;
+	        return getURL(combine(new String[] {
+	                baseURL + "getplayerstatus" + responseFormat,
+	                devID,
+	                getSignature("getplayerstatus"),
+	                sessionID,
+	                getTimestamp(),
+	                player
+	        }, "/"));
+	}
+	  
+	  public String getTopMatches() throws Exception {
+	        if (!isSessionValid() && !createSession()) return null;
+	        return getURL(combine(new String[] {
+	                baseURL + "gettopmatches" + responseFormat,
+	                devID,
+	                getSignature("gettopmatches"),
+	                sessionID,
+	                getTimestamp()
+	        }, "/"));
+	}
+	  
+	   public String getItems(String languageCode) throws Exception {
+	        if (!isSessionValid() && !createSession()) return null;
+	        return getURL(combine(new String[] {
+	                baseURL + "getitems" + responseFormat,
+	                devID,
+	                getSignature("getitems"),
+	                sessionID,
+	                getTimestamp(),
+	                languageCode
 	        }, "/"));
 	}
 	  
